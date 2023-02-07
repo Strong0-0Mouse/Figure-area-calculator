@@ -1,31 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace FigureAreaCalculator;
 
 public class Triangle : IFigure
 {
-    private readonly List<double> _sides;
+    private readonly double _sideA;
+    private readonly double _sideB;
+    private readonly double _sideC;
     
     /// <summary>
     /// Triangle
     /// </summary>
-    /// <param name="sides">The triangle must have exactly 3 strictly positive sides and exist with the given parameters</param>
+    /// <param name="sideA">Strictly positive side</param>
+    /// <param name="sideB">Strictly positive side</param>
+    /// <param name="sideC">Strictly positive side</param>
     /// <exception cref="ArgumentException">Received invalid triangle sides</exception>
-    public Triangle(IEnumerable<double> sides)
+    public Triangle(double sideA, double sideB, double sideC)
     {
-        var enumerable = sides.ToList();
-        if (enumerable.Count != 3 || enumerable.Any(s => s <= 0))
+        if (sideA <= 0 || sideB <= 0 || sideC <= 0)
             throw new ArgumentException("Invalid sides");
         
-        _sides = enumerable.ToList();
-        
-        var a = _sides[0];
-        var b = _sides[1];
-        var c = _sides[2];
+        _sideA = sideA;
+        _sideB = sideB;
+        _sideC = sideC;
 
-        if (a + b <= c || b + c <= a || a + c <= b)
+        if (_sideA + _sideB <= _sideC || _sideB + _sideC <= _sideA || _sideA + _sideC <= _sideB)
             throw new ArgumentException("Triangle does not exist");
     }
     
@@ -35,12 +34,8 @@ public class Triangle : IFigure
     /// <returns>Triangle area</returns>
     public double CalculateSquare()
     {
-        var a = _sides[0];
-        var b = _sides[1];
-        var c = _sides[2];
-
-        var semiPerimeter = (a + b + c) / 2;
-        return Math.Sqrt(semiPerimeter * (semiPerimeter - a) * (semiPerimeter - b) * (semiPerimeter - c));  
+        var semiPerimeter = (_sideA + _sideB + _sideC) / 2;
+        return Math.Sqrt(semiPerimeter * (semiPerimeter - _sideA) * (semiPerimeter - _sideB) * (semiPerimeter - _sideC));  
     }
 
     /// <summary>
@@ -50,12 +45,8 @@ public class Triangle : IFigure
     /// <returns>Is it a right triangle or not</returns>
     public bool IsRight(double tolerance)
     {
-        var a = _sides[0];
-        var b = _sides[1];
-        var c = _sides[2];
-
-        return Math.Abs(a * a + b * b - c * c) < tolerance || 
-               Math.Abs(a * a + c * c - b * b) < tolerance ||
-               Math.Abs(c * c + b * b - a * a) < tolerance;
+        return Math.Abs(_sideA * _sideA + _sideB * _sideB - _sideC * _sideC) < tolerance || 
+               Math.Abs(_sideA * _sideA + _sideC * _sideC - _sideB * _sideB) < tolerance ||
+               Math.Abs(_sideC * _sideC + _sideB * _sideB - _sideA * _sideA) < tolerance;
     }
 }
