@@ -20,7 +20,7 @@ public class Circle : IFigure
     }
     
     /// <summary>
-    /// Method for calculating the area of a circle
+    /// Calculating the area of a circle
     /// </summary>
     /// <returns>Circle area</returns>
     public double CalculateSquare()

@@ -29,7 +29,7 @@ public class Triangle : IFigure
     }
     
     /// <summary>
-    /// Method for calculating the area of a triangle
+    /// Calculating the area of a triangle
     /// </summary>
     /// <returns>Triangle area</returns>
     public double CalculateSquare()
@@ -39,7 +39,7 @@ public class Triangle : IFigure
     }
 
     /// <summary>
-    /// Method for recognizing a right triangle
+    /// Recognizing a right triangle
     /// </summary>
     /// <param name="tolerance">Tolerance when comparison double numbers</param>
     /// <returns>Is it a right triangle or not</returns>
