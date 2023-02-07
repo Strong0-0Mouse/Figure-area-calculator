@@ -10,20 +10,28 @@ Target framework: net6.0
 
 ## IFigure
 
-### CalculateSquare() | return double
+```csharp
+CalculateSquare() | return double
+```
 ---
 
 ## Triangle
 
-### CalculateSquare() | return double
+```csharp
+CalculateSquare() | return double
+```
 
-### IsRight() | return bool
+```csharp
+IsRight() | return bool
+```
 ---
 
 ## Circle
 
-### CalculateSquare() | return double
-
+```csharp
+CalculateSquare() | return double
+```
+---
 # Модели
 
 ## IFigure - интефейс абстрактной фигуры, которая должна уметь находить свою площадь
